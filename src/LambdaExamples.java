@@ -42,12 +42,24 @@ public class LambdaExamples{
         employees.add(snow);
 
         // comparator is a functional interface because it has one method that needs an override
-        Collections.sort(employees, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee employee1, Employee employee2) {
-                return employee1.getName().compareTo(employee2.getName());
-            }
-        });
+//        Collections.sort(employees, new Comparator<Employee>() {
+//            @Override
+//            public int compare(Employee employee1, Employee employee2) {
+//                return employee1.getName().compareTo(employee2.getName());
+//            }
+//        });
+
+
+        // lambda version
+//        Collections.sort(employees, (Employee employee1, Employee employee2) ->
+//                employee1.getName().compareTo(employee2.getName()));
+
+        // lambda version with inferred types
+//        Collections.sort(employees, (employee1, employee2) ->
+//                employee1.getName().compareTo(employee2.getName()));
+
+        // lambda version Comparator.comparing
+        Collections.sort(employees, Comparator.comparing(Employee::getName));
 
         for(Employee employee: employees){
             System.out.println(employee.getName());
